@@ -8,13 +8,7 @@ function getJson(url, callback){
 		if (xhr.readyState !== 4) {
 			throw new Error('waiting server response');
 		}
-
-		callback(xhr);
-	}	
-}
-
-function filmsParser(xhr){
-	var film = JSON.parse(xhr.response);
-
-	displayFilms(film);
+		var obj = JSON.parse(xhr.response);
+		callback(obj);
+	}
 }
