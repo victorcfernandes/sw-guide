@@ -5,39 +5,47 @@ function getJson(url, callback){
 	xhr.onreadystatechange = callback;
 }
 
-
 function personagemParser(){
 	if (xhr.readyState !== 4) {
 		throw new Error('waiting server response');
 	}
-	var json = JSON.parse(xhr.response);
-	console.log(json);
-	for (var property in json) {
-		if (json.hasOwnProperty(property)) {
+	personagem = JSON.parse(xhr.response);
+	for (property in personagem) {
+		if (personagem.hasOwnProperty(property)) {
 			node = document.getElementById('attr-list');
 			liNode = document.createElement("li");
-			liNode.appendChild(document.createTextNode( property.replace('_', ' ') + ': '+ json[property]));
+			textNode = property.replace('_', ' ') + ': '+ personagem[property];
+			liNode.appendChild(document.createTextNode(textNode));
 			node.appendChild(liNode);
 		}
 		
 	}
+	//call films JSON
+	for (var i = 0; i < personagem.films.length; i++) {
+		getJson(personagem.films[i], filmsParser);
+	}
+	return personagem;
+}
+
+function filmsParser(){
+	if (xhr.readyState !==4){
+		throw new Error('waiting server response');
+	}
+
+	film = JSON.parse(xhr.response);
+	node = document.getElementById('films');
+	filmNode = document.createElement("li");
+	filmAtrrList = document.createElement("ul");
+	for(property in film){
+		filmAtrr = document.createElement("li");
+		textNode = property.replace('_', ' ') + ': '+ film[property];
+		filmAtrr.appendChild(document.createTextNode(textNode));
+		filmAtrrList.appendChild(filmAtrr);
+
+	}
+	filmNode.appendChild(filmAtrrList);
+	node.appendChild(filmNode);
 }
 
 
 personagem = getJson("http://swapi.co/api/people/1/", personagemParser);
-
-//document.write('<h1>' + personagem.name + '</h1>');
-// document.write('<p>Altura:' + personagem.height + '</p>');
-
-// planeta = getJson(personagem.homeworld);
-// teste = document.getElementById('planet');
-// teste.appendChild(document.createTextNode(planeta.name));
-
-// films = personagem.films;
-
-// for (var i = films.length - 1; i >= 0; i--) {
-// 	films[i] = getJson(films[i]);
-// }
-
-// document.write('<h2>'+ films[3].title +'</h2>');
-// document.write('<p>' + films[3].opening_crawl + '</p>');
