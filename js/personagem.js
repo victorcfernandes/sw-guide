@@ -10,12 +10,16 @@ function personagemParser(xhr){
 	for (var i = 0; i < personagem.films.length; i++) {
 		getJson(personagem.films[i], filmsParser);
 	}
-	console.log(personagem);
 	displayPersonagem(personagem);
 }
 
 function displayPersonagem(personagem){
+	var counter = 0;
 	for (property in personagem) {
+		counter++;
+		if(counter > 8){ // only display 8 attributes
+			return;
+		}
 		if (personagem.hasOwnProperty(property)) {
 			var node = document.getElementById('attr-list');
 			var liNode = document.createElement("li");
@@ -28,17 +32,13 @@ function displayPersonagem(personagem){
 
 function displayFilms(film){
 	var node = document.getElementById('films');
-	console.log(film);
 	filmNode = document.createElement("li");
-	filmAtrrList = document.createElement("ul");
-	for(property in film){
-		filmAtrr = document.createElement("li");
-		textNode = property.replace('_', ' ') + ': '+ film[property];
-		filmAtrr.appendChild(document.createTextNode(textNode));
-		filmAtrrList.appendChild(filmAtrr);
+	filmAnchor = document.createElement('a');
+	filmAnchor.setAttribute('href', 'film/' +  film.episode_id);
+	textNode = document.createTextNode(film.title);
 
-	}
-	filmNode.appendChild(filmAtrrList);
+	filmAnchor.appendChild(textNode);
+	filmNode.appendChild(filmAnchor);
 	node.appendChild(filmNode);
 }
 
