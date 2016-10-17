@@ -30,3 +30,7 @@ function toRoman(num) {
   }
   return result;
 }
+
+function loadAnotherObject(id){ //toDo
+  getPlanet(id);
+}

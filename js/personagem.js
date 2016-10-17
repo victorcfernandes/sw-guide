@@ -36,7 +36,8 @@ function displayFilms(film){
 	var node = document.getElementById('films');
 	filmNode = document.createElement("li");
 	filmAnchor = document.createElement('a');
-	filmAnchor.setAttribute('href', 'films/' +  film.episode_id);
+	filmAnchor.setAttribute('href', "#" /*'films/' +  film.episode_id*/);
+	filmAnchor.addEventListener('click', function(){loadAnotherObject(film.episode_id)});
 	textNode = document.createTextNode(film.title);
 
 	filmAnchor.appendChild(textNode);
@@ -48,7 +49,9 @@ function displayHomeWorld(planet){
 	var node = document.getElementById('attr-list');
 	var liNode = document.createElement("li");
 	var planetAnchor = document.createElement("a");
-	planetAnchor.setAttribute("href", "planets/" + planet.url.slice(-2));
+	planetAnchor.setAttribute("href", "#" /*"planets/" + planet.url.slice(-2)*/);
+	var id = parseInt(planet.url.slice(-2 , -1));
+	planetAnchor.addEventListener('click', function(){loadAnotherObject(id)});
 	var textNode = document.createTextNode(planet.name);
 	var liText = document.createTextNode("Homeworld: ");
 
@@ -59,4 +62,4 @@ function displayHomeWorld(planet){
 }
 
 getPersonagem(1);
-console.log(window.location.pathname);
+// console.log(window.location.pathname);
