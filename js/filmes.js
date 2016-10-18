@@ -2,15 +2,32 @@ function getFilme(id){
 	getJson(APIBaseURL + "films/" + id + "/", filmeParser);
 }
 
+function searchFilme(search){
+	getJson(APIBaseURL + "films/" + "?search=" + search, getSearchObject);
+
+}
+
+ function getSearchObject(search){
+
+ 	var film = search.results[0];
+
+ 	filmeId=film.url.charAt(film.url.length-2); //grabs the ID for the movie
+ 	getFilme(filmeId); 
+
+ }
 
 
 function filmTitle(filme) {
 
+	var filmTitle = document.getElementsByClassName("title")[0];
+
+	filmTitle.innerText = "Star Wars: " + filme.title;
+	
+
 	var node = document.getElementsByClassName("whichEpisode")[0];
 	//var episode = document.createElement("h1");
-	node.appendChild(document.createTextNode(filme["title"]));
+	node.appendChild(document.createTextNode("Episode " +filme["episode_id"]));
 
-	console.log(node);
 
 	
 	//node.appendChild(episode);
@@ -24,8 +41,6 @@ function filmeParser(filme){
 		getJson(filme.characters[i], displayCharactersInMovie);
 
 	}
-	console.log(filme);
-
 	filmTitle(filme);
 
 }
@@ -39,4 +54,5 @@ function displayCharactersInMovie(character) {
 	node.appendChild(liNode);
 }
 
-getFilme(1);
+searchItem = window.prompt("Which is your favorite SW movie?")
+searchFilme(searchItem);

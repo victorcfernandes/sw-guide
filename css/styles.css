@@ -1,12 +1,19 @@
 body{
 	background-color: black;
-	color: #ccc;
+	color: #18C4FE;
+	font-size: 1.2em;
 }
 a{
 	color: #18C4FE;
+}
+
+.title{
+	color: #ff6;
+
 }
 
 .whichEpisode {
 
 	color: #ff6;
 }
+
