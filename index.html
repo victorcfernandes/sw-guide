@@ -8,11 +8,26 @@
 </head>
 <body>
 	<div id="container">
-		<h1 id="title"></h1>
-		<ul id='attr-list'></ul>
-		<h2>Related Movies</h2>
-		<ul id="films"></ul>
+		<div id="topbar">
+			<h1 class="headerTitle">Lorem Ipsum</h1>
+			<form action="" class="searchForm">
+				<input class="searchInput" type="text" name="search" placeholder="Search">
+				<input type="submit" value="submit">
+			</form>
+		</div>
+		<div id="content">
+			<div class="clear"></div>
+			<div class="panel">
+				<h2 id="title"></h2>
+				<ul id='attr-list'></ul>
+			</div>
+			<div class="panel">
+				<h3>Related Movies</h3>
+				<ul id="films"></ul>
+			</div>
+		</div>
 	</div>
+	
 	<script src="js/helpers.js"></script>
 	<script src="js/personagem.js"></script>
 	<script src="js/planet.js"></script>
