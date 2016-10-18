@@ -1,8 +1,3 @@
-function getPersonagem(id){
-	getJson(APIBaseURL + "people/" + id + "/", personagemParser);
-}
-
-
 function personagemParser(personagem){
 	//call films getJSON
 	for (var i = 0; i < personagem.films.length; i++) {
@@ -16,8 +11,10 @@ function personagemParser(personagem){
 }
 
 function displayPersonagem(personagem){
+	resetContent();
 	var counter = 0;
-	var node = document.getElementById('attr-list');
+	var titleText = document.createTextNode('Character');
+	title.appendChild(titleText);
 	for (property in personagem) {
 		counter++;
 		if(counter > 8){ // only display 8 attributes
@@ -27,36 +24,37 @@ function displayPersonagem(personagem){
 			var liNode = document.createElement("li");
 			var textNode = property.replace('_', ' ') + ': '+ personagem[property];
 			liNode.appendChild(document.createTextNode(textNode));
-			node.appendChild(liNode);
+			attrList.appendChild(liNode);
 		}
 	}
 }
 
 function displayFilms(film){
-	var node = document.getElementById('films');
 	filmNode = document.createElement("li");
 	filmAnchor = document.createElement('a');
-	filmAnchor.setAttribute('href', 'films/' +  film.episode_id);
+	filmAnchor.setAttribute('href', "#" /*'films/' +  film.episode_id*/);
+	filmAnchor.addEventListener('click', function(){getObject('films', film.episode_id, filmsParser)});
 	textNode = document.createTextNode(film.title);
 
 	filmAnchor.appendChild(textNode);
 	filmNode.appendChild(filmAnchor);
-	node.appendChild(filmNode);
+	relatedFilms.appendChild(filmNode);
 }
 
 function displayHomeWorld(planet){
-	var node = document.getElementById('attr-list');
 	var liNode = document.createElement("li");
 	var planetAnchor = document.createElement("a");
-	planetAnchor.setAttribute("href", "planets/" + planet.url.slice(-2));
+	planetAnchor.setAttribute("href", "#" /*"planets/" + planet.url.slice(-2)*/);
+	var id = parseInt(planet.url.slice(-2 , -1));
+	planetAnchor.addEventListener('click', function(){getObject('planets', id, planetParser)});
 	var textNode = document.createTextNode(planet.name);
 	var liText = document.createTextNode("Homeworld: ");
 
 	planetAnchor.appendChild(textNode);
 	liNode.appendChild(liText);
 	liNode.appendChild(planetAnchor);
-	node.appendChild(liNode);
+	attrList.appendChild(liNode);
 }
 
-getPersonagem(1);
-console.log(window.location.pathname);
+getObject("people", 1, personagemParser);
+// console.log(window.location.pathname);

@@ -1,5 +1,13 @@
 var APIBaseURL = "http://swapi.co/api/";
 
+var attrList = document.getElementById('attr-list');
+var relatedFilms = document.getElementById('films');
+var title = document.getElementById('title');
+
+function getObject(type, id, callback){
+  getJson(APIBaseURL + type + '/' + id + "/", callback);
+}
+
 function getJson(url, callback){
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", url, true);
@@ -29,4 +37,12 @@ function toRoman(num) {
     }
   }
   return result;
+}
+
+
+function resetContent(){
+  attrList.innerHtml = '';
+  while (relatedFilms.hasChildNodes()) {
+    relatedFilms.removeChild(relatedFilms.lastChild);
+  }
 }
