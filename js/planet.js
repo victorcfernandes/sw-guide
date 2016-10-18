@@ -1,10 +1,3 @@
-function getPlanet(id) {
-	getJson(APIBaseURL + "planets/" + id + "/", planetParser);
-}
-
-
-
-
 function planetParser(planet){
 
 	displayPlanet(planet);
@@ -12,7 +5,9 @@ function planetParser(planet){
 
 
 function displayPlanet(planet){
+	resetContent();
 	var counter = 0;
+	title.innerHTML = 'Planet';
 	var node = document.getElementById('attr-list');
 	node.innerHTML = '';
 	for (property in planet) {
