@@ -41,7 +41,12 @@ function toRoman(num) {
 
 
 function resetContent(){
-  attrList.innerHtml = '';
+  while (title.hasChildNodes()) {
+    title.removeChild(title.lastChild);
+  }
+  while (attrList.hasChildNodes()) {
+    attrList.removeChild(attrList.lastChild)
+  }
   while (relatedFilms.hasChildNodes()) {
     relatedFilms.removeChild(relatedFilms.lastChild);
   }
