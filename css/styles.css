@@ -22,6 +22,7 @@ input[type='text']{
 	background-color: #4c596f;
 	border: none;
 	color: #dedce5;
+	border-radius: 6px;
 }
 
 input[type='submit']{
@@ -30,6 +31,16 @@ input[type='submit']{
 	padding: 0 5px;
 	height: 40px;
 	color: #dedce5;
+	border-radius: 6px;
+}
+
+.select{
+    outline: none;
+    height: 40px;
+    border: none;
+    background-color: #4c596f;
+    color: #dedce5;
+    font-size: 14px;
 }
 
 .clear{
