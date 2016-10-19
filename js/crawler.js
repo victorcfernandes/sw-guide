@@ -1,7 +1,3 @@
-function getFilm(id){
-	getJson(APIBaseURL + "films/" + id + "/", displayCrawler);
-}
-
 function displayCrawler(film){
 	const parentNode = document.getElementById("crawler");
 	const titleNode = document.getElementById("title");
@@ -15,4 +11,4 @@ function displayCrawler(film){
 	parentNode.appendChild(text);
 }
 
-getFilm(3);
+getObject('films', 3, displayCrawler);
