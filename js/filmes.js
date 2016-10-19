@@ -4,7 +4,6 @@ function getFilme(id){
 
 function searchFilme(search){
 	getJson(APIBaseURL + "films/" + "?search=" + search, getSearchObject);
-
 }
 
  function getSearchObject(search){

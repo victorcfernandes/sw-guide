@@ -2,21 +2,17 @@ function getFilm(id){
 	getJson(APIBaseURL + "films/" + id + "/", displayCrawler);
 }
 
-
-
 function displayCrawler(film){
-	console.log(film);
-	parentNode = document.getElementById("crawler");
-	titleNode = document.getElementById("title");
-	episodeNode = document.getElementById("episode");
-	episode = document.createTextNode(toRoman(film.episode_id));
-	title = document.createTextNode(film.title);
-	text = document.createTextNode(film.opening_crawl);
+	const parentNode = document.getElementById("crawler");
+	const titleNode = document.getElementById("title");
+	const episodeNode = document.getElementById("episode");
+	const episode = document.createTextNode(toRoman(film.episode_id));
+	const title = document.createTextNode(film.title);
+	const text = document.createTextNode(film.opening_crawl);
 
 	episodeNode.appendChild(episode);
 	titleNode.appendChild(title);
 	parentNode.appendChild(text);
 }
-
 
 getFilm(3);
