@@ -1,4 +1,4 @@
-function filmParser(filme){
+function filmsParser(filme){
 
 	displayFilm(filme);
 }

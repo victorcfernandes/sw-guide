@@ -52,13 +52,17 @@ function resetContent(){
   }
 }
 
-function listProperty(property, personagem) {
-
-      var liNode = document.createElement("li");
-      var textNode = property.replace('_', ' ') + ': '+ personagem[property];
-      liNode.appendChild(document.createTextNode(textNode));
-      attrList.appendChild(liNode);
+function listProperty(property, obj) {
+  console.log("text to see if theres html");
+  console.log(obj);
+  console.log(obj[property]);
+  var liNode = document.createElement("li");
+  var textNode = property.replace('_', ' ') + ': '+ obj[property];
+  liNode.appendChild(document.createTextNode(textNode));
+  attrList.appendChild(liNode);
 
 
 }
+
+
 
