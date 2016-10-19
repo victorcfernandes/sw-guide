@@ -1,0 +1,25 @@
+ESLINT usando ES6
+Babel transcript ES6
+webpack modula
+
+
+
+
+
+-----------------------------
+
+
+var Movie = function() {
+	var endpoint = 'adas'
+
+
+
+
+
+
+}
+
+
+Movie.getList()
+
+Movie.get(12)

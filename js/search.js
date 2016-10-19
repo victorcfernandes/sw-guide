@@ -1,4 +1,4 @@
-form = document.getElementById('searchForm');
+const form = document.getElementById('searchForm');
 
 form.addEventListener('submit', function(e){
 	e.preventDefault();
@@ -17,9 +17,9 @@ function searchParse(obj){
 		console.log('not found');
 		return; //toDO show not found message
 	}
-	obj = obj.results[0];
+	obj = obj.results[0];  //get only the first result
 	type = obj.url.split("/")[4]; //get the type in the url parameter
-	console.log(type);
+	// console.log(type);
 	var callback;
 
 	switch (type) {

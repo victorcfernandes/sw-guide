@@ -65,10 +65,13 @@ input[type='submit']{
 }
 
 #attr-list{
-
 	overflow-wrap: hidden;
-
-
+}
+#attr-list > li{
+	text-transform: capitalize;
+}
+#attr-list > li span{
+	color: #ee8;
 }
 
 .panel{
@@ -83,10 +86,8 @@ input[type='submit']{
 
 .title{
 	color: #ff6;
-
 }
 
 .whichEpisode {
-
 	color: #ff6;
 }

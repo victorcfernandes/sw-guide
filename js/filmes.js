@@ -1,5 +1,9 @@
+<<<<<<< HEAD
 function filmsParser(filme){
 
+=======
+function filmParser(filme){
+>>>>>>> cef483638b510a9e8a52afee622d201b739082dd
 	displayFilm(filme);
 }
 

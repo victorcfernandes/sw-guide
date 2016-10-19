@@ -1,8 +1,6 @@
 function planetParser(planet){
-
 	displayPlanet(planet);
 }
-
 
 function displayPlanet(planet){
 	resetContent();
@@ -16,10 +14,7 @@ function displayPlanet(planet){
 			return;
 		}
 		if (planet.hasOwnProperty(property)) {
-			var liNode = document.createElement("li");
-			var textNode = property.replace('_', ' ') + ': '+ planet[property];
-			liNode.appendChild(document.createTextNode(textNode));
-			node.appendChild(liNode);
+			listProperty(property, planet);
 		}
 	}
 }
