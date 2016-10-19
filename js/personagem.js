@@ -32,7 +32,7 @@ function displayFilms(film){
 	const textNode = document.createTextNode(film.title);
 
 	filmAnchor.setAttribute('href', "#" /*'films/' +  film.episode_id*/);
-	filmAnchor.addEventListener('click', function(){getObject('films', film.episode_id, filmsParser)});
+	filmAnchor.addEventListener('click', function(){getObject('films', film.episode_id, filmParser)});
 	filmAnchor.appendChild(textNode);
 	filmNode.appendChild(filmAnchor);
 	relatedFilms.appendChild(filmNode);
@@ -46,9 +46,11 @@ function displayHomeWorld(planet){
 	planetAnchor.addEventListener('click', function(){getObject('planets', id, planetParser)});
 	var textNode = document.createTextNode(planet.name);
 	var liText = document.createTextNode("Homeworld: ");
+	var spanNode = document.createElement("span");
 
+	spanNode.appendChild(liText);
 	planetAnchor.appendChild(textNode);
-	liNode.appendChild(liText);
+	liNode.appendChild(spanNode);
 	liNode.appendChild(planetAnchor);
 	attrList.appendChild(liNode);
 }

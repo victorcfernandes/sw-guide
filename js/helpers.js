@@ -14,7 +14,8 @@ function getJson(url, callback){
 	xhr.send();
 	xhr.onreadystatechange = function(){
 		if (xhr.readyState !== 4) {
-			throw new Error('waiting server response');
+			//throw new Error('waiting server response');
+      return;
 		}
 		var obj = JSON.parse(xhr.response);
 		callback(obj);
@@ -54,11 +55,13 @@ function resetContent(){
 
 function listProperty(property, personagem) {
 
-      var liNode = document.createElement("li");
-      var textNode = property.replace('_', ' ') + ': '+ personagem[property];
+      const liNode = document.createElement("li");
+      const spanNode = document.createElement('span');
+      const textNode = personagem[property];
+
+      spanNode.appendChild(document.createTextNode(property.replace('_', ' ') + ': '));
+      liNode.appendChild(spanNode);
       liNode.appendChild(document.createTextNode(textNode));
       attrList.appendChild(liNode);
-
-
 }
 
