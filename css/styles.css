@@ -64,6 +64,13 @@ input[type='submit']{
 	padding: 20px;
 }
 
+#attr-list{
+
+	overflow-wrap: hidden;
+
+
+}
+
 .panel{
 	background-color: #120c0e;
 	border-radius: 3px;
