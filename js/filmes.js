@@ -1,10 +1,12 @@
-<<<<<<< HEAD
-function filmsParser(filme){
 
-=======
 function filmParser(filme){
->>>>>>> cef483638b510a9e8a52afee622d201b739082dd
 	displayFilm(filme);
+	document.getElementById("panelTitle1").innerHTML="Related Characters";
+
+	for (var i=0; i<filme.characters.length; i++) {
+		getJson(filme.characters[i], displayCharacters);
+	}
+
 }
 
 function displayFilm(filme){
@@ -13,7 +15,7 @@ function displayFilm(filme){
 
 	for (property in filme) {
 		counter++;
-		if(counter > 100){ // only display 8 attributes
+		if(counter > 6){ // only display 8 attributes
 			return;
 		}
 		if (filme.hasOwnProperty(property)) {
@@ -23,8 +25,32 @@ function displayFilm(filme){
 }
 
 
- /* se URL
- 	Separe por ,
- 	Acesse objeto
- 	print primeira propriedade
- 	*/
+function displayCharacters(character){
+
+	const filmNode = document.createElement("li");
+	const filmAnchor = document.createElement('a');
+	const textNode = document.createTextNode(character.name);
+
+	filmAnchor.setAttribute('href', "#");
+	filmAnchor.addEventListener('click', function(){getJson(character.url, personagemParser)});
+	filmAnchor.appendChild(textNode);
+	filmNode.appendChild(filmAnchor);
+	relatedFilms.appendChild(filmNode);
+}
+
+function displayPlanet(planet){
+	resetContent();
+	var counter = 0;
+	title.innerHTML = 'Planet';
+	var node = document.getElementById('attr-list');
+	node.innerHTML = '';
+	for (property in planet) {
+		counter++;
+		if(counter > 8){ // only display 8 attributes
+			return;
+		}
+		if (planet.hasOwnProperty(property)) {
+			listProperty(property, planet);
+		}
+	}
+}

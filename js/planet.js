@@ -1,5 +1,10 @@
 function planetParser(planet){
+	document.getElementById("panelTitle1").innerHTML="Related Movies";
+
 	displayPlanet(planet);
+	for (var i = 0; i < planet.films.length; i++) {
+		getJson(planet.films[i], displayFilms);
+	}
 }
 
 function displayPlanet(planet){
@@ -18,3 +23,4 @@ function displayPlanet(planet){
 		}
 	}
 }
+

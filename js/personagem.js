@@ -1,5 +1,6 @@
 function personagemParser(personagem){
 	//call films getJSON
+	document.getElementById("panelTitle1").innerHTML="Related Movies";
 	for (var i = 0; i < personagem.films.length; i++) {
 		getJson(personagem.films[i], displayFilms);
 	}

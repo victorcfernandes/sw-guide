@@ -30,7 +30,7 @@ function searchParse(obj){
 			callback = planetParser;
 			break;
 		case "films":
-			callback = filmsParser;
+			callback = filmParser;
 			break;
 		default:
 			console.log("erro"); //toDO implement other types
