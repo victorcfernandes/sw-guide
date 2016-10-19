@@ -31,8 +31,8 @@ function displayFilms(film){
 	const filmAnchor = document.createElement('a');
 	const textNode = document.createTextNode(film.title);
 
-	filmAnchor.setAttribute('href', "#" /*'films/' +  film.episode_id*/);
-	filmAnchor.addEventListener('click', function(){getObject('films', film.episode_id, filmParser)});
+	filmAnchor.setAttribute('href', "#");
+	filmAnchor.addEventListener('click', function(){getJson(film.url, filmParser)});
 	filmAnchor.appendChild(textNode);
 	filmNode.appendChild(filmAnchor);
 	relatedFilms.appendChild(filmNode);
@@ -41,9 +41,8 @@ function displayFilms(film){
 function displayHomeWorld(planet){
 	var liNode = document.createElement("li");
 	var planetAnchor = document.createElement("a");
-	planetAnchor.setAttribute("href", "#" /*"planets/" + planet.url.slice(-2)*/);
-	var id = parseInt(planet.url.slice(-2 , -1));
-	planetAnchor.addEventListener('click', function(){getObject('planets', id, planetParser)});
+	planetAnchor.setAttribute("href", "#");
+	planetAnchor.addEventListener('click', function(){getJson(planet.url, planetParser)});
 	var textNode = document.createTextNode(planet.name);
 	var liText = document.createTextNode("Homeworld: ");
 	var spanNode = document.createElement("span");
@@ -56,4 +55,3 @@ function displayHomeWorld(planet){
 }
 
 getObject("people", 1, personagemParser);
-// console.log(window.location.pathname);
