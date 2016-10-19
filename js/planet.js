@@ -1,8 +1,6 @@
 function planetParser(planet){
-
 	displayPlanet(planet);
 }
-
 
 function displayPlanet(planet){
 	resetContent();

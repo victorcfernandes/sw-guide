@@ -27,12 +27,12 @@ function displayPersonagem(personagem){
 }
 
 function displayFilms(film){
-	filmNode = document.createElement("li");
-	filmAnchor = document.createElement('a');
+	const filmNode = document.createElement("li");
+	const filmAnchor = document.createElement('a');
+	const textNode = document.createTextNode(film.title);
+
 	filmAnchor.setAttribute('href', "#" /*'films/' +  film.episode_id*/);
 	filmAnchor.addEventListener('click', function(){getObject('films', film.episode_id, filmsParser)});
-	textNode = document.createTextNode(film.title);
-
 	filmAnchor.appendChild(textNode);
 	filmNode.appendChild(filmAnchor);
 	relatedFilms.appendChild(filmNode);
