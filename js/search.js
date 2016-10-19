@@ -29,6 +29,9 @@ function searchParse(obj){
 		case "planets":
 			callback = planetParser;
 			break;
+		case "films":
+			callback = filmParser;
+			break;
 		default:
 			console.log("erro"); //toDO implement other types
 			return;

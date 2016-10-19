@@ -21,10 +21,7 @@ function displayPersonagem(personagem){
 			return;
 		}
 		if (personagem.hasOwnProperty(property)) {
-			var liNode = document.createElement("li");
-			var textNode = property.replace('_', ' ') + ': '+ personagem[property];
-			liNode.appendChild(document.createTextNode(textNode));
-			attrList.appendChild(liNode);
+			listProperty(property, personagem);
 		}
 	}
 }

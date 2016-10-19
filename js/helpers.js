@@ -51,3 +51,14 @@ function resetContent(){
     relatedFilms.removeChild(relatedFilms.lastChild);
   }
 }
+
+function listProperty(property, personagem) {
+
+      var liNode = document.createElement("li");
+      var textNode = property.replace('_', ' ') + ': '+ personagem[property];
+      liNode.appendChild(document.createTextNode(textNode));
+      attrList.appendChild(liNode);
+
+
+}
+
