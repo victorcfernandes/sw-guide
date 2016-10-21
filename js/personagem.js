@@ -1,17 +1,15 @@
 function personagemParser(personagem){
 	//call homeworld getJSON
-	console.log(personagem);
+	resetContent();
+	displayPersonagem(personagem);
 	getObject('planets', personagem.homeworld.split("/")[5], displayHomeWorld);
 	//call films getJSON
 	for (var i = 0; i < personagem.films.length; i++) {
 		getObject("films", personagem.films[i].split("/")[5], displayRelatedFilms);
 	}
-
-	displayPersonagem(personagem);
 }
 
 function displayPersonagem(personagem){
-	resetContent();
 	var counter = 0;
 	var titleText = document.createTextNode('Character');
 	title.appendChild(titleText);
@@ -36,7 +34,6 @@ function displayRelatedFilms(film){
 	filmAnchor.appendChild(textNode);
 	filmNode.appendChild(filmAnchor);
 	relatedFilms.appendChild(filmNode);
-	console.log("displayFILMS")
 }
 
 function displayHomeWorld(planet){
@@ -55,4 +52,4 @@ function displayHomeWorld(planet){
 	attrList.appendChild(liNode);
 }
 
-getObject("people", 1, personagemParser);
+//getObject("people", 1, personagemParser);

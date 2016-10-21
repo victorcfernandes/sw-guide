@@ -1,14 +1,14 @@
 function getObject(type, id, callback){
   var URI = type + '/' + id;
-  console.log(URI);
   var cachedObj = sessionStorage.getItem(URI);
-  if (cachedObj !== null) {
+  if (cachedObj === null) {
+    console.log("made request!");
+    getJson(APIBaseURL + URI + "/", callback);
+  }
+  else {
     console.log('got cached obj!');
     cachedObj = JSON.parse(cachedObj);
     callback(cachedObj);
-  }
-  else {
-    return getJson(APIBaseURL + URI + "/", callback);  
   }
 }
 
@@ -25,7 +25,7 @@ function getJson(url, callback){
     var obj = JSON.parse(xhr.response);
     if (obj.hasOwnProperty('count')) { // check if is search
       obj = obj.results[0];
-      
+      xhr.response = xhr.response[0];
       if(obj == undefined){
         throw new Error("Not Found");
       }
@@ -68,13 +68,12 @@ function resetContent(){
 }
 
 function listProperty(property, personagem) {
+  const liNode = document.createElement("li");
+  const spanNode = document.createElement('span');
+  const textNode = personagem[property];
 
-      const liNode = document.createElement("li");
-      const spanNode = document.createElement('span');
-      const textNode = personagem[property];
-
-      spanNode.appendChild(document.createTextNode(property.replace('_', ' ') + ': '));
-      liNode.appendChild(spanNode);
-      liNode.appendChild(document.createTextNode(textNode));
-      attrList.appendChild(liNode);
+  spanNode.appendChild(document.createTextNode(property.replace('_', ' ') + ': '));
+  liNode.appendChild(spanNode);
+  liNode.appendChild(document.createTextNode(textNode));
+  attrList.appendChild(liNode);
 }
