@@ -17,9 +17,7 @@ function searchParse(obj){
 		console.log('not found');
 		return; //toDO show not found message
 	}
-	obj = obj.results[0];  //get only the first result
 	type = obj.url.split("/")[4]; //get the type in the url parameter
-	// console.log(type);
 	var callback;
 
 	switch (type) {

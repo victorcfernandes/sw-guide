@@ -32,6 +32,8 @@ input[type='submit']{
 	height: 40px;
 	color: #dedce5;
 	border-radius: 6px;
+	outline: none;
+	cursor: pointer;
 }
 
 .select{

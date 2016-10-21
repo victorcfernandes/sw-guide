@@ -1,11 +1,15 @@
-var APIBaseURL = "http://swapi.co/api/";
-
-var attrList = document.getElementById('attr-list');
-var relatedFilms = document.getElementById('films');
-var title = document.getElementById('title');
-
 function getObject(type, id, callback){
-  getJson(APIBaseURL + type + '/' + id + "/", callback);
+  var URI = type + '/' + id;
+  console.log(URI);
+  var cachedObj = sessionStorage.getItem(URI);
+  if (cachedObj !== null) {
+    console.log('got cached obj!');
+    cachedObj = JSON.parse(cachedObj);
+    callback(cachedObj);
+  }
+  else {
+    return getJson(APIBaseURL + URI + "/", callback);  
+  }
 }
 
 function getJson(url, callback){
@@ -17,11 +21,21 @@ function getJson(url, callback){
 			//throw new Error('waiting server response');
       return;
 		}
-		var obj = JSON.parse(xhr.response);
+    
+    var obj = JSON.parse(xhr.response);
+    if (obj.hasOwnProperty('count')) { // check if is search
+      obj = obj.results[0];
+      
+      if(obj == undefined){
+        throw new Error("Not Found");
+      }
+    }
+    var uri = obj.url.split("/");
+    uri = uri[4] + "/" + uri[5];
+    sessionStorage.setItem(uri, xhr.response);
 		callback(obj);
 	}
 }
-
 
 function toRoman(num) {  
   var result = '';
@@ -64,4 +78,3 @@ function listProperty(property, personagem) {
       liNode.appendChild(document.createTextNode(textNode));
       attrList.appendChild(liNode);
 }
-
