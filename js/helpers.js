@@ -25,14 +25,14 @@ function getJson(url, callback){
     var obj = JSON.parse(xhr.response);
     if (obj.hasOwnProperty('count')) { // check if is search
       obj = obj.results[0];
-      xhr.response = xhr.response[0];
+
       if(obj == undefined){
         throw new Error("Not Found");
       }
     }
     var uri = obj.url.split("/");
     uri = uri[4] + "/" + uri[5];
-    sessionStorage.setItem(uri, xhr.response);
+    sessionStorage.setItem(uri, JSON.stringify(obj));
 		callback(obj);
 	}
 }
