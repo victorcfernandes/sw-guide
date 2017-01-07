@@ -1,0 +1,95 @@
+body{
+	background-color: black;
+	color: #dedce5;
+	margin: 0;
+	font-family: "News Cycle", sans-serif;
+}
+a{
+	color: #2c8bcf;
+	text-decoration: none;
+}
+
+li{
+	list-style: none;
+	line-height: 1.4;
+}
+
+input[type='text']{
+	height: 40px;
+	font-size: 14px;
+	outline: none;
+	padding: 0 10px;
+	background-color: #4c596f;
+	border: none;
+	color: #dedce5;
+	border-radius: 6px;
+}
+
+input[type='submit']{
+	background-color: #4c596f;
+	border: none;
+	padding: 0 5px;
+	height: 40px;
+	color: #dedce5;
+	border-radius: 6px;
+	outline: none;
+	cursor: pointer;
+}
+
+.select{
+    outline: none;
+    height: 40px;
+    border: none;
+    background-color: #4c596f;
+    color: #dedce5;
+    font-size: 14px;
+}
+
+.clear{
+	clear: both;
+}
+#root{
+	max-width: 1600px;
+	margin: auto;
+	background-color: #383337;
+}
+#content{
+	padding: 20px;
+}
+
+.headerTitle{
+	display: inline;
+}
+#topbar{
+	margin-bottom: 20px;
+	background-color: #120c0e;
+	padding: 20px;
+}
+
+#attr-list{
+	overflow-wrap: hidden;
+}
+#attr-list > li{
+	text-transform: capitalize;
+}
+#attr-list .tag{
+	color: #ee8;
+}
+
+.panel{
+	background-color: #120c0e;
+	border-radius: 3px;
+	padding: 5px 10px;
+	margin-bottom: 40px;
+}
+.searchForm{
+	float: right;
+}
+
+.title{
+	color: #ff6;
+}
+
+.whichEpisode {
+	color: #ff6;
+}
