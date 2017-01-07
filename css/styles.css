@@ -48,7 +48,7 @@ input[type='submit']{
 .clear{
 	clear: both;
 }
-#container{
+#root{
 	max-width: 1600px;
 	margin: auto;
 	background-color: #383337;
@@ -72,7 +72,7 @@ input[type='submit']{
 #attr-list > li{
 	text-transform: capitalize;
 }
-#attr-list > li span{
+#attr-list .tag{
 	color: #ee8;
 }
 
