@@ -1,4 +1,4 @@
-const APIBaseURL = "http://swapi.co/api/";
+const APIBaseURL = "https://swapi.co/api/";
 
 const attrList = document.getElementById('attr-list');
 const relatedFilms = document.getElementById('films');
