@@ -3,7 +3,6 @@
 <head>
 	<title>SW Guide</title>
 	<meta encode="utf-8">
-
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -27,11 +26,24 @@
 			<div class="clear"></div>
 			<div class="panel">
 				<h2 id="title">Search Characters, Films, Planets...</h2>
-				<ul id='attr-list'>
-					<li v-for="(dado, index) in dados" >
-						<span class="tag">{{index}}:</span> <span v-show="shouldRender(dado)">{{dado}}</span>
-					</li>
-				</ul>
+				<table id="attr-table" cellpadding="4">
+					<tbody>
+						<tr v-for="(dado, index) in dados">
+							<td class="tag" v-text="index"></td>
+							<td v-text="dado" v-if="shouldRender(dado)"></td>
+							<td v-else>
+								<a href="#" @click.prevent="showRelated(dado)">{{dado.name}}</a>
+								<table>
+									<tr>
+										<td v-for="rel in dado" style="padding-right: 8px;">
+											<a href="#" @click.prevent="showRelated(rel)">{{rel.name}}{{rel.title}}</a>
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
