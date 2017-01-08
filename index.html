@@ -3,6 +3,7 @@
 <head>
 	<title>SW Guide</title>
 	<meta encode="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -11,7 +12,7 @@
 			<h1 class="headerTitle">SW ENCICLOPEDIA</h1>
 			<form class="searchForm" v-on:submit.prevent="search">
 				<select class="select" id="selectInput" v-model="select">
-					<option value="people">People</option>
+					<option value="people">Characters</option>
 					<option value="films">Films</option>
 					<option value="planets">Planets</option>
 					<option value="vehicles">Vehicles</option>
@@ -19,7 +20,7 @@
 					<option value="starships">Starships</option>
 				</select>
 				<input type="text" v-model="searchText" placeholder="Search">
-				<input type="submit">
+				<input type="submit" value="Search">
 			</form>
 		</div>
 		<div id="content">

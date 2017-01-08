@@ -1,6 +1,4 @@
 - criar menu com opcoes de listar todos os personagens, filmes, etc...
-- wookify(?)
-
 
 Babel transcript ES6
 webpack modula
