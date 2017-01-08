@@ -53,27 +53,3 @@ function toRoman(num) {
   }
   return result;
 }
-
-
-function resetContent(){
-  while (title.hasChildNodes()) {
-    title.removeChild(title.lastChild);
-  }
-  while (attrList.hasChildNodes()) {
-    attrList.removeChild(attrList.lastChild)
-  }
-  while (relatedFilms.hasChildNodes()) {
-    relatedFilms.removeChild(relatedFilms.lastChild);
-  }
-}
-
-function listProperty(property, personagem) {
-  const liNode = document.createElement("li");
-  const spanNode = document.createElement('span');
-  const textNode = personagem[property];
-
-  spanNode.appendChild(document.createTextNode(property.replace('_', ' ') + ': '));
-  liNode.appendChild(spanNode);
-  liNode.appendChild(document.createTextNode(textNode));
-  attrList.appendChild(liNode);
-}

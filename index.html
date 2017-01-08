@@ -31,15 +31,11 @@
 						<tr v-for="(dado, index) in dados">
 							<td class="tag" v-text="index"></td>
 							<td v-text="dado" v-if="shouldRender(dado)"></td>
-							<td v-else>
-								<a href="#" @click.prevent="showRelated(dado)">{{dado.name}}</a>
-								<table>
-									<tr>
-										<td v-for="rel in dado" style="padding-right: 8px;">
-											<a href="#" @click.prevent="showRelated(rel)">{{rel.name}}{{rel.title}}</a>
-										</td>
-									</tr>
-								</table>
+							<td v-else >
+								<a href="#" @click.prevent="showRelated(dado)" v-if="dado">{{dado.name}}</a>
+								<p v-for="rel in dado">
+									<a href="#" @click.prevent="showRelated(rel)">{{rel.name}}{{rel.title}}</a>
+								</p>
 							</td>
 						</tr>
 					</tbody>

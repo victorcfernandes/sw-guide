@@ -1,6 +1,5 @@
 app = new Vue({
     el: '#root',
-
     data: {
         dados: {},
         select: 'people',
@@ -16,6 +15,9 @@ app = new Vue({
                 });
         },
         isAnotherObject(key, value){
+            if (value === null){
+                return false;
+            }
             if (value.constructor !== Array && value.constructor !== String){
                 return false;
             }
@@ -24,6 +26,9 @@ app = new Vue({
             }
         },
         shouldRender(prop){
+            if (prop === null){
+                return false;
+            }
             if (prop.constructor !== Object && prop.constructor !== Array){
                 return true;
             }
@@ -40,19 +45,33 @@ app = new Vue({
                         if(attr.constructor === Array) {
                             app.dados[index] = [];
                             attr.forEach( function (attr) {
-                                    axios.get(attr).then(response => app.dados[index].push(response.data))
+                                let obj = JSON.parse(sessionStorage.getItem(attr));
+                                if(obj){
+                                    app.dados[index].push(obj);
                                 }
-                            );
+                                else {
+                                    axios.get(attr).then(response => {
+                                        app.dados[index].push(response.data);
+                                        sessionStorage.setItem(attr, JSON.stringify(response.data));
+                                    });
+                                }
+                            });
                         }
                         else{
-                            axios.get(attr).then(response => this.dados[index] = response.data);
+                            let obj = JSON.parse(sessionStorage.getItem(attr));
+                            if(obj){
+                                app.dados[index] = obj;
+                            }
+                            else {
+                                axios.get(attr).then(response => {
+                                    app.dados[index] = response.data;
+                                    sessionStorage.setItem(attr, JSON.stringify(response.data));
+                                });
+                            }
                         }
                     }
                 }
             }
         },
     },
-
-mounted(){
-},
 });
