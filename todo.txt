@@ -1,32 +1,4 @@
-- criar uma funcao generica para renderizar os elementos na pagina
-- refatorar todas as funcoes de display
 - criar menu com opcoes de listar todos os personagens, filmes, etc...
-- wookify(?)
-- listar todos as relacoes de todos os objetos
 
-
-ESLINT usando ES6
 Babel transcript ES6
 webpack modula
-
-
-
-
-
------------------------------
-
-
-var Movie = function() {
-	var endpoint = 'adas'
-
-
-
-
-
-
-}
-
-
-Movie.getList()
-
-Movie.get(12)

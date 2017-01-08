@@ -7,25 +7,43 @@
 	<link rel="stylesheet" href="css/crawler.css">
 </head>
 <body>
-	<div class="menu">
-		<ul>
-			<li class="menu-item"><a href="#">Episode I</a></li>
-			<li class="menu-item"><a href="#">Episode II</a></li>
-			<li class="menu-item"><a href="#">Episode III</a></li>
-			<li class="menu-item"><a href="#">Episode IV</a></li>
-			<li class="menu-item"><a href="#">Episode V</a></li>
-			<li class="menu-item"><a href="#">Episode VI</a></li>
-			<li class="menu-item"><a href="#">Episode VII</a></li>
-		</ul>	
-	</div>
-	<div id="titles">
-		<div id="titlecontent">
-			<h3 id="episode" class="center">Episode </h3>
-			<h2 id=title class="center capitalize"></h2>
-			<p id="crawler"></p>
+	<div id="root">
+		<div class="menu">
+			<ul>
+				<li class="menu-item">
+					<a href="#" @click.prevent="getMovie('http://swapi.co/api/films/4/')">Episode I</a>
+				</li>
+				<li class="menu-item">
+					<a href="#" @click.prevent="getMovie('http://swapi.co/api/films/5/')">Episode II</a>
+				</li>
+				<li class="menu-item">
+					<a href="#" @click.prevent="getMovie('http://swapi.co/api/films/6/')">Episode III</a>
+				</li>
+				<li class="menu-item">
+					<a href="#" @click.prevent="getMovie('http://swapi.co/api/films/1/')">Episode IV</a>
+				</li>
+				<li class="menu-item">
+					<a href="#" @click.prevent="getMovie('http://swapi.co/api/films/2/')">Episode V</a>
+				</li>
+				<li class="menu-item">
+					<a href="#" @click.prevent="getMovie('http://swapi.co/api/films/3/')">Episode VI</a>
+				</li>
+				<li class="menu-item">
+					<a href="#" @click.prevent="getMovie('http://swapi.co/api/films/7/')">Episode VII</a>
+				</li>
+			</ul>
+		</div>
+		<div id="titles">
+			<div v-bind:class="{ titlecontent: isActive }">
+				<h3 id="episode" class="center">Episode {{movie.episode_id}}</h3>
+				<h2 id=title class="center capitalize" v-text="movie.title"></h2>
+				<p id="crawler" v-text="movie.opening_crawl"></p>
+			</div>
 		</div>
 	</div>
-	<script src="js/helpers.js"></script>
+
+	<script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+	<script src="https://unpkg.com/vue@2.1.8/dist/vue.js"></script>
 	<script src="js/crawler.js"></script>
 </body>
 </html>

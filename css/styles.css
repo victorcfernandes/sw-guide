@@ -1,12 +1,15 @@
 body{
-	background-color: black;
 	color: #dedce5;
 	margin: 0;
 	font-family: "News Cycle", sans-serif;
+	background: black url("../img/bg.jpg");
 }
 a{
 	color: #2c8bcf;
 	text-decoration: none;
+}
+a:hover{
+	text-decoration: underline;
 }
 
 li{
@@ -23,17 +26,18 @@ input[type='text']{
 	border: none;
 	color: #dedce5;
 	border-radius: 6px;
+	width: 130px;
 }
 
 input[type='submit']{
 	background-color: #4c596f;
 	border: none;
-	padding: 0 5px;
 	height: 40px;
 	color: #dedce5;
 	border-radius: 6px;
 	outline: none;
 	cursor: pointer;
+	margin-top: 5px;
 }
 
 .select{
@@ -49,30 +53,35 @@ input[type='submit']{
 	clear: both;
 }
 #root{
-	max-width: 1600px;
+	max-width: 1400px;
 	margin: auto;
-	background-color: #383337;
+	margin-top: 120px;
 }
 #content{
-	padding: 20px;
+	padding: 15px;
 }
 
 .headerTitle{
 	display: inline;
+	margin: 0;
+	padding-bottom: 10px;
 }
 #topbar{
-	margin-bottom: 20px;
-	background-color: #120c0e;
-	padding: 20px;
+	background-color: #000;
+	padding: 15px 10px;
+	display: flex;
+	justify-content: space-between;
+	flex-wrap: wrap;
+	position: fixed;
+	width: 95%;
+	z-index: 1;
+	top: 0;
 }
 
-#attr-list{
-	overflow-wrap: hidden;
-}
-#attr-list > li{
+#attr-table td{
 	text-transform: capitalize;
 }
-#attr-list .tag{
+#attr-table .tag{
 	color: #ee8;
 }
 
@@ -80,10 +89,6 @@ input[type='submit']{
 	background-color: #120c0e;
 	border-radius: 3px;
 	padding: 5px 10px;
-	margin-bottom: 40px;
-}
-.searchForm{
-	float: right;
 }
 
 .title{
@@ -92,4 +97,43 @@ input[type='submit']{
 
 .whichEpisode {
 	color: #ff6;
+}
+
+table {
+	width: 100%;
+	border-collapse: collapse;
+}
+td {
+	padding: 6px;
+	border: 1px solid #555;
+	text-align: left;
+}
+td p{
+	margin: 10px 0;
+}
+
+@media only screen and (max-width: 760px),
+(min-device-width: 768px) and (max-device-width: 1024px) {
+	/* Force table to not be like tables anymore */
+	table, tbody, th, td, tr {
+		display: block;
+	}
+	tr {
+		border: 1px solid #ccc;
+	}
+	td {
+		/* Behave  like a "row" */
+		border: none;
+		border-bottom: 1px solid #eee;
+		position: relative;
+	}
+}
+
+@media only screen and (min-width: 640px){
+	#topbar{
+		width: 98%;
+	}
+	#root{
+		margin-top: 65px;
+	}
 }

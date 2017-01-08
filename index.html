@@ -3,7 +3,7 @@
 <head>
 	<title>SW Guide</title>
 	<meta encode="utf-8">
-
+	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="css/styles.css">
 </head>
 <body>
@@ -12,7 +12,7 @@
 			<h1 class="headerTitle">SW ENCICLOPEDIA</h1>
 			<form class="searchForm" v-on:submit.prevent="search">
 				<select class="select" id="selectInput" v-model="select">
-					<option value="people">People</option>
+					<option value="people">Characters</option>
 					<option value="films">Films</option>
 					<option value="planets">Planets</option>
 					<option value="vehicles">Vehicles</option>
@@ -20,18 +20,27 @@
 					<option value="starships">Starships</option>
 				</select>
 				<input type="text" v-model="searchText" placeholder="Search">
-				<input type="submit">
+				<input type="submit" value="Search">
 			</form>
 		</div>
 		<div id="content">
 			<div class="clear"></div>
 			<div class="panel">
 				<h2 id="title">Search Characters, Films, Planets...</h2>
-				<ul id='attr-list'>
-					<li v-for="(dado, index) in dados" >
-						<span class="tag">{{index}}:</span> <span v-show="shouldRender(dado)">{{dado}}</span>
-					</li>
-				</ul>
+				<table id="attr-table" cellpadding="4">
+					<tbody>
+						<tr v-for="(dado, index) in dados">
+							<td class="tag" v-text="index"></td>
+							<td v-text="dado" v-if="shouldRender(dado)"></td>
+							<td v-else >
+								<a href="#" @click.prevent="showRelated(dado)" v-if="dado">{{dado.name}}</a>
+								<p v-for="rel in dado">
+									<a href="#" @click.prevent="showRelated(rel)">{{rel.name}}{{rel.title}}</a>
+								</p>
+							</td>
+						</tr>
+					</tbody>
+				</table>
 			</div>
 		</div>
 	</div>
